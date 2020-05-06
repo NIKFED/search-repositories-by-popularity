@@ -6,7 +6,7 @@ from terminaltables import GithubFlavoredMarkdownTable
 import codecs
 
 # Insert you username and password
-g = Github("fed.nick2013@yandex.ru", "2010paskajib4ik")
+g = Github("*", "*")
 
 # Settings
 number_of_reps = 10
@@ -18,9 +18,6 @@ md_file_name = 'result3dFrameworks.md'
 seach_query = g.search_repositories("3d", sort="stars", order="desc")
 results = []
 for index, rep in enumerate(seach_query):
-
-    # print(rep.url)  # Everything are here as json file (You can use it instead of the API)
-
     rep_prop = [index + 1]
     link = github_server_link + rep.full_name
     rep_prop.append("[{}]({})".format(rep.name, link))

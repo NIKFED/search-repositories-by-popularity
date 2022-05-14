@@ -15,18 +15,7 @@ github_server_link = "https://github.com/"
 md_file_name = 'resultSimulatorsML.md'
 
 # Main query
-search_query = []
-mlAgents = g.get_repo("Unity-Technologies/ml-agents")
-airSim = g.get_repo("microsoft/AirSim")
-apollo = g.get_repo("apolloconfig/apollo")
-carla = g.get_repo("carla-simulator/carla")
-metacar = g.get_repo("thibo73800/metacar")
-search_query.append(apollo)
-search_query.append(airSim)
-search_query.append(mlAgents)
-search_query.append(carla)
-search_query.append(metacar)
-
+search_query = g.search_repositories("reinforcement-learning simulator", sort="stars", order="desc")
 results = []
 for index, rep in enumerate(search_query):
     rep_prop = [index + 1]
@@ -72,7 +61,7 @@ dpi = 80
 fig = plt.figure(dpi = dpi, figsize = (512 / dpi, 384 / dpi) )
 mpl.rcParams.update({'font.size': 9})
 
-plt.title('Top 5 simulators with the biggest stars and forks')
+plt.title('Top 10 simulators with the biggest stars and forks')
 
 plt.grid(True, zorder = 1)
 
@@ -84,9 +73,6 @@ plt.barh([x + 0.3 for x in xs], valueStar,
 plt.barh([x + 0.05 for x in xs], valueFork,
          height = 0.2, color = 'blue', alpha = 0.7, label = 'Forks',
          zorder = 2)
-
-plt.xlabel("amount")
-
 plt.yticks(xs, labels)
 
 plt.legend(loc='upper right')
